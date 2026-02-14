@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_ad4ca8fa728d55208b49effaa2eb8dd9 {
+                #map_3c0e6b6c692fcea25862939071466804 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -50,39 +50,70 @@
             </script>
 
         
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
 </head>
 <body>
     
     
 <div style="
-position: fixed;
-bottom: 50px;
-left: 50px;
-width: 240px;
-height: 200px;
-background-color: white;
-border:2px solid grey;
-z-index:9999;
-font-size:14px;
-padding: 10px;
+    position: fixed;
+    top: 15px;
+    left: 50px;
+    width: 420px;
+    z-index:9999;
+    font-size:18px;
+    background-color:white;
+    padding:12px;
+    border-radius:10px;
+    border:2px solid #444;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 ">
-<b>PM2.5 Levels (µg/m³)</b><br><br>
-<span style="color:green;">●</span> 0 - 30 Good<br>
-<span style="color:lightgreen;">●</span> 31 - 60 Satisfactory<br>
-<span style="color:orange;">●</span> 61 - 90 Moderate<br>
-<span style="color:red;">●</span> 91 - 120 Poor<br>
+<b>Bhopal Air Quality Map</b><br>
+PM2.5 & PM10 station-wise visualization (AQI India Dataset 2023–2025)
+</div>
+    
+<div style="
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 270px;
+    z-index:9999;
+    font-size:13px;
+    background-color:white;
+    padding:12px;
+    border-radius:10px;
+    border:2px solid #444;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.25);
+">
+<b>Legend</b><br><br>
+
+<b>PM2.5 (µg/m³)</b><br>
+<span style="color:green;">●</span> 0–30 Good<br>
+<span style="color:lightgreen;">●</span> 31–60 Satisfactory<br>
+<span style="color:orange;">●</span> 61–90 Moderate<br>
+<span style="color:red;">●</span> 91–120 Poor<br>
 <span style="color:darkred;">●</span> 121+ Very Poor / Severe<br>
+<span style="color:gray;">●</span> Missing Data<br><br>
+
+<b>PM10 (µg/m³)</b><br>
+<span style="color:green;">●</span> 0–50 Good<br>
+<span style="color:lightgreen;">●</span> 51–100 Satisfactory<br>
+<span style="color:orange;">●</span> 101–250 Moderate<br>
+<span style="color:red;">●</span> 251–350 Poor<br>
+<span style="color:darkred;">●</span> 351+ Very Poor / Severe<br>
 <span style="color:gray;">●</span> Missing Data
 </div>
     
-            <div class="folium-map" id="map_ad4ca8fa728d55208b49effaa2eb8dd9" ></div>
+            <div class="folium-map" id="map_3c0e6b6c692fcea25862939071466804" ></div>
         
 </body>
 <script>
     
     
-            var map_ad4ca8fa728d55208b49effaa2eb8dd9 = L.map(
-                "map_ad4ca8fa728d55208b49effaa2eb8dd9",
+            var map_3c0e6b6c692fcea25862939071466804 = L.map(
+                "map_3c0e6b6c692fcea25862939071466804",
                 {
                     center: [23.2599, 77.4126],
                     crs: L.CRS.EPSG3857,
@@ -99,7 +130,7 @@ padding: 10px;
 
         
     
-            var tile_layer_444b1a633ee3b8ae769bf265753c5b6a = L.tileLayer(
+            var tile_layer_245de17f62cca33619d660e68ba41da8 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -116,76 +147,272 @@ padding: 10px;
             );
         
     
-            tile_layer_444b1a633ee3b8ae769bf265753c5b6a.addTo(map_ad4ca8fa728d55208b49effaa2eb8dd9);
+            tile_layer_245de17f62cca33619d660e68ba41da8.addTo(map_3c0e6b6c692fcea25862939071466804);
         
     
-            var circle_marker_7a680decb04160e41878534ef8314123 = L.circleMarker(
+            L.control.fullscreen(
+                {
+  "position": "topright",
+  "title": "Full Screen",
+  "titleCancel": "Exit Full Screen",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_3c0e6b6c692fcea25862939071466804);
+        
+    
+            var feature_group_f541f8ec0aaaea14c4b1f7471f900bca = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_34ec0e2fec2c2f6c7ee2246b6f115384 = L.circleMarker(
                 [23.264759, 77.381568],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
-            ).addTo(map_ad4ca8fa728d55208b49effaa2eb8dd9);
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f541f8ec0aaaea14c4b1f7471f900bca);
         
     
-        var popup_0733034cb8cd4536d53824d549657507 = L.popup({
-  "maxWidth": 300,
+        var popup_f84da191b7cf2903b94c872697bb502c = L.popup({
+  "maxWidth": 350,
 });
 
         
             
-                var html_ac7af55b0f3bad6404ee9b478c19679f = $(`<div id="html_ac7af55b0f3bad6404ee9b478c19679f" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> Idgah Hills, Bhopal - MPPCB<br>     <b>PM2.5:</b> 55.0<br>     <b>PM10:</b> 89.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
-                popup_0733034cb8cd4536d53824d549657507.setContent(html_ac7af55b0f3bad6404ee9b478c19679f);
+                var html_316633d8161bb7920472eaf873b0c021 = $(`<div id="html_316633d8161bb7920472eaf873b0c021" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> Idgah Hills, Bhopal - MPPCB<br>     <b>PM2.5:</b> 55.0<br>     <b>PM10:</b> 89.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
+                popup_f84da191b7cf2903b94c872697bb502c.setContent(html_316633d8161bb7920472eaf873b0c021);
             
         
 
-        circle_marker_7a680decb04160e41878534ef8314123.bindPopup(popup_0733034cb8cd4536d53824d549657507)
+        circle_marker_34ec0e2fec2c2f6c7ee2246b6f115384.bindPopup(popup_f84da191b7cf2903b94c872697bb502c)
         ;
 
         
     
     
-            var circle_marker_9388c34ea1a79570ef2705985cdc58fe = L.circleMarker(
+            circle_marker_34ec0e2fec2c2f6c7ee2246b6f115384.bindTooltip(
+                `<div>
+                     Idgah Hills, Bhopal - MPPCB | PM2.5: 55.0
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8f8b78852c37699cee1bdc9c27e80d92 = L.circleMarker(
                 [23.210494, 77.425409],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
-            ).addTo(map_ad4ca8fa728d55208b49effaa2eb8dd9);
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f541f8ec0aaaea14c4b1f7471f900bca);
         
     
-        var popup_77148c5500ada5c9b533af23c79cde81 = L.popup({
-  "maxWidth": 300,
+        var popup_52f428ad4491c9a7a1694b049b177f76 = L.popup({
+  "maxWidth": 350,
 });
 
         
             
-                var html_d5039e315012baf1bb4b51510b07201b = $(`<div id="html_d5039e315012baf1bb4b51510b07201b" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> Paryavaran Parisar, Bhopal - MPPCB<br>     <b>PM2.5:</b> 47.0<br>     <b>PM10:</b> 57.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
-                popup_77148c5500ada5c9b533af23c79cde81.setContent(html_d5039e315012baf1bb4b51510b07201b);
+                var html_498c2f399a7530690ba5e953f53e8279 = $(`<div id="html_498c2f399a7530690ba5e953f53e8279" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> Paryavaran Parisar, Bhopal - MPPCB<br>     <b>PM2.5:</b> 47.0<br>     <b>PM10:</b> 57.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
+                popup_52f428ad4491c9a7a1694b049b177f76.setContent(html_498c2f399a7530690ba5e953f53e8279);
             
         
 
-        circle_marker_9388c34ea1a79570ef2705985cdc58fe.bindPopup(popup_77148c5500ada5c9b533af23c79cde81)
+        circle_marker_8f8b78852c37699cee1bdc9c27e80d92.bindPopup(popup_52f428ad4491c9a7a1694b049b177f76)
         ;
 
         
     
     
-            var circle_marker_0f9d08fd885c66ada8b71947e2767e20 = L.circleMarker(
+            circle_marker_8f8b78852c37699cee1bdc9c27e80d92.bindTooltip(
+                `<div>
+                     Paryavaran Parisar, Bhopal - MPPCB | PM2.5: 47.0
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2fa5bc89bc11a993a9df2b6726de0600 = L.circleMarker(
                 [23.233584, 77.400574],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
-            ).addTo(map_ad4ca8fa728d55208b49effaa2eb8dd9);
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(feature_group_f541f8ec0aaaea14c4b1f7471f900bca);
         
     
-        var popup_f9916959666e6c4f05d31066944a712e = L.popup({
-  "maxWidth": 300,
+        var popup_17c1b50d39b35fcf3009586a085e721a = L.popup({
+  "maxWidth": 350,
 });
 
         
             
-                var html_e36a31558fa04713ff9f124deaf29ce2 = $(`<div id="html_e36a31558fa04713ff9f124deaf29ce2" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> T T Nagar, Bhopal - MPPCB<br>     <b>PM2.5:</b> 38.0<br>     <b>PM10:</b> 0.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
-                popup_f9916959666e6c4f05d31066944a712e.setContent(html_e36a31558fa04713ff9f124deaf29ce2);
+                var html_5fc63913f072fa3c68c8740125dee99e = $(`<div id="html_5fc63913f072fa3c68c8740125dee99e" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> T T Nagar, Bhopal - MPPCB<br>     <b>PM2.5:</b> 38.0<br>     <b>PM10:</b> 0.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
+                popup_17c1b50d39b35fcf3009586a085e721a.setContent(html_5fc63913f072fa3c68c8740125dee99e);
             
         
 
-        circle_marker_0f9d08fd885c66ada8b71947e2767e20.bindPopup(popup_f9916959666e6c4f05d31066944a712e)
+        circle_marker_2fa5bc89bc11a993a9df2b6726de0600.bindPopup(popup_17c1b50d39b35fcf3009586a085e721a)
         ;
 
         
     
+    
+            circle_marker_2fa5bc89bc11a993a9df2b6726de0600.bindTooltip(
+                `<div>
+                     T T Nagar, Bhopal - MPPCB | PM2.5: 38.0
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_f541f8ec0aaaea14c4b1f7471f900bca.addTo(map_3c0e6b6c692fcea25862939071466804);
+        
+    
+            var feature_group_b27962b1a47a529d9a3e904c39b25b43 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_25cd8c47ec7a1d34de2ae2694212bf30 = L.circleMarker(
+                [23.264759, 77.381568],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b27962b1a47a529d9a3e904c39b25b43);
+        
+    
+        var popup_58cfbd30fffcd74c66237d1ea04fdb51 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_a2cdd3ae5d746d2f8527c64e98dba247 = $(`<div id="html_a2cdd3ae5d746d2f8527c64e98dba247" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> Idgah Hills, Bhopal - MPPCB<br>     <b>PM2.5:</b> 55.0<br>     <b>PM10:</b> 89.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
+                popup_58cfbd30fffcd74c66237d1ea04fdb51.setContent(html_a2cdd3ae5d746d2f8527c64e98dba247);
+            
+        
+
+        circle_marker_25cd8c47ec7a1d34de2ae2694212bf30.bindPopup(popup_58cfbd30fffcd74c66237d1ea04fdb51)
+        ;
+
+        
+    
+    
+            circle_marker_25cd8c47ec7a1d34de2ae2694212bf30.bindTooltip(
+                `<div>
+                     Idgah Hills, Bhopal - MPPCB | PM10: 89.0
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cd79ac712336e73a54a22145167ec01a = L.circleMarker(
+                [23.210494, 77.425409],
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b27962b1a47a529d9a3e904c39b25b43);
+        
+    
+        var popup_ef38cd2ff97e4cfe4e0c0c36012ac33a = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_eab2f1f3fc06f2d88b8a21380797d155 = $(`<div id="html_eab2f1f3fc06f2d88b8a21380797d155" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> Paryavaran Parisar, Bhopal - MPPCB<br>     <b>PM2.5:</b> 47.0<br>     <b>PM10:</b> 57.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
+                popup_ef38cd2ff97e4cfe4e0c0c36012ac33a.setContent(html_eab2f1f3fc06f2d88b8a21380797d155);
+            
+        
+
+        circle_marker_cd79ac712336e73a54a22145167ec01a.bindPopup(popup_ef38cd2ff97e4cfe4e0c0c36012ac33a)
+        ;
+
+        
+    
+    
+            circle_marker_cd79ac712336e73a54a22145167ec01a.bindTooltip(
+                `<div>
+                     Paryavaran Parisar, Bhopal - MPPCB | PM10: 57.0
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_85bede9af8e9a37b99b3b7ddc616293f = L.circleMarker(
+                [23.233584, 77.400574],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b27962b1a47a529d9a3e904c39b25b43);
+        
+    
+        var popup_b96ba35f418ec0800d2a88b335f013f6 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_8e2fb8fbd0bac06dcde21705c9d8b69f = $(`<div id="html_8e2fb8fbd0bac06dcde21705c9d8b69f" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> T T Nagar, Bhopal - MPPCB<br>     <b>PM2.5:</b> 38.0<br>     <b>PM10:</b> 0.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
+                popup_b96ba35f418ec0800d2a88b335f013f6.setContent(html_8e2fb8fbd0bac06dcde21705c9d8b69f);
+            
+        
+
+        circle_marker_85bede9af8e9a37b99b3b7ddc616293f.bindPopup(popup_b96ba35f418ec0800d2a88b335f013f6)
+        ;
+
+        
+    
+    
+            circle_marker_85bede9af8e9a37b99b3b7ddc616293f.bindTooltip(
+                `<div>
+                     T T Nagar, Bhopal - MPPCB | PM10: 0.0
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_1684789f106456ab3453993eeecc9f1b = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var heat_map_0ba21be89403ecee0dab1479feb6d96f = L.heatLayer(
+                [[23.264759, 77.381568, 55.0], [23.210494, 77.425409, 47.0], [23.233584, 77.400574, 38.0]],
+                {
+  "minOpacity": 0.5,
+  "maxZoom": 13,
+  "radius": 30,
+  "blur": 25,
+}
+            );
+        
+    
+            heat_map_0ba21be89403ecee0dab1479feb6d96f.addTo(feature_group_1684789f106456ab3453993eeecc9f1b);
+        
+    
+            var layer_control_93aba12415baf1900db1dd8e97890ddf_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_245de17f62cca33619d660e68ba41da8,
+                },
+                overlays :  {
+                    "PM2.5 Markers" : feature_group_f541f8ec0aaaea14c4b1f7471f900bca,
+                    "PM10 Markers" : feature_group_b27962b1a47a529d9a3e904c39b25b43,
+                    "PM2.5 Heatmap" : feature_group_1684789f106456ab3453993eeecc9f1b,
+                },
+            };
+            let layer_control_93aba12415baf1900db1dd8e97890ddf = L.control.layers(
+                layer_control_93aba12415baf1900db1dd8e97890ddf_layers.base_layers,
+                layer_control_93aba12415baf1900db1dd8e97890ddf_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_3c0e6b6c692fcea25862939071466804);
+
+        
 </script>
 </html>
