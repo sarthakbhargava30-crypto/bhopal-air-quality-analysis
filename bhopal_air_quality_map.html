@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_3c0e6b6c692fcea25862939071466804 {
+                #map_2d6a8a892a6ce32b48d43dd84f3c8632 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -61,31 +61,31 @@
     position: fixed;
     top: 15px;
     left: 50px;
-    width: 420px;
+    width: 430px;
     z-index:9999;
-    font-size:18px;
+    font-size:17px;
     background-color:white;
     padding:12px;
-    border-radius:10px;
-    border:2px solid #444;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    border-radius:12px;
+    border:2px solid #333;
+    box-shadow: 2px 2px 12px rgba(0,0,0,0.25);
 ">
-<b>Bhopal Air Quality Map</b><br>
-PM2.5 & PM10 station-wise visualization (AQI India Dataset 2023–2025)
+<b>Bhopal Air Quality Interactive Map</b><br>
+PM2.5 & PM10 station-wise visualization + Heatmap
 </div>
     
 <div style="
     position: fixed;
-    bottom: 30px;
-    left: 30px;
-    width: 270px;
+    bottom: 25px;
+    left: 25px;
+    width: 280px;
     z-index:9999;
     font-size:13px;
     background-color:white;
     padding:12px;
-    border-radius:10px;
-    border:2px solid #444;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.25);
+    border-radius:12px;
+    border:2px solid #333;
+    box-shadow: 2px 2px 12px rgba(0,0,0,0.20);
 ">
 <b>Legend</b><br><br>
 
@@ -94,7 +94,7 @@ PM2.5 & PM10 station-wise visualization (AQI India Dataset 2023–2025)
 <span style="color:lightgreen;">●</span> 31–60 Satisfactory<br>
 <span style="color:orange;">●</span> 61–90 Moderate<br>
 <span style="color:red;">●</span> 91–120 Poor<br>
-<span style="color:darkred;">●</span> 121+ Very Poor / Severe<br>
+<span style="color:darkred;">●</span> 121+ Very Poor/Severe<br>
 <span style="color:gray;">●</span> Missing Data<br><br>
 
 <b>PM10 (µg/m³)</b><br>
@@ -102,18 +102,18 @@ PM2.5 & PM10 station-wise visualization (AQI India Dataset 2023–2025)
 <span style="color:lightgreen;">●</span> 51–100 Satisfactory<br>
 <span style="color:orange;">●</span> 101–250 Moderate<br>
 <span style="color:red;">●</span> 251–350 Poor<br>
-<span style="color:darkred;">●</span> 351+ Very Poor / Severe<br>
+<span style="color:darkred;">●</span> 351+ Very Poor/Severe<br>
 <span style="color:gray;">●</span> Missing Data
 </div>
     
-            <div class="folium-map" id="map_3c0e6b6c692fcea25862939071466804" ></div>
+            <div class="folium-map" id="map_2d6a8a892a6ce32b48d43dd84f3c8632" ></div>
         
 </body>
 <script>
     
     
-            var map_3c0e6b6c692fcea25862939071466804 = L.map(
-                "map_3c0e6b6c692fcea25862939071466804",
+            var map_2d6a8a892a6ce32b48d43dd84f3c8632 = L.map(
+                "map_2d6a8a892a6ce32b48d43dd84f3c8632",
                 {
                     center: [23.2599, 77.4126],
                     crs: L.CRS.EPSG3857,
@@ -130,7 +130,7 @@ PM2.5 & PM10 station-wise visualization (AQI India Dataset 2023–2025)
 
         
     
-            var tile_layer_245de17f62cca33619d660e68ba41da8 = L.tileLayer(
+            var tile_layer_952612f29925332d437c94285e906729 = L.tileLayer(
                 "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
                 {
   "minZoom": 0,
@@ -147,7 +147,7 @@ PM2.5 & PM10 station-wise visualization (AQI India Dataset 2023–2025)
             );
         
     
-            tile_layer_245de17f62cca33619d660e68ba41da8.addTo(map_3c0e6b6c692fcea25862939071466804);
+            tile_layer_952612f29925332d437c94285e906729.addTo(map_2d6a8a892a6ce32b48d43dd84f3c8632);
         
     
             L.control.fullscreen(
@@ -157,39 +157,39 @@ PM2.5 & PM10 station-wise visualization (AQI India Dataset 2023–2025)
   "titleCancel": "Exit Full Screen",
   "forceSeparateButton": false,
 }
-            ).addTo(map_3c0e6b6c692fcea25862939071466804);
+            ).addTo(map_2d6a8a892a6ce32b48d43dd84f3c8632);
         
     
-            var feature_group_f541f8ec0aaaea14c4b1f7471f900bca = L.featureGroup(
+            var feature_group_cf645885c9729a07e76c904e6ae801c7 = L.featureGroup(
                 {
 }
             );
         
     
-            var circle_marker_34ec0e2fec2c2f6c7ee2246b6f115384 = L.circleMarker(
+            var circle_marker_0ce8f0dc5cde53afc0d0e1b88243021d = L.circleMarker(
                 [23.264759, 77.381568],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
-            ).addTo(feature_group_f541f8ec0aaaea14c4b1f7471f900bca);
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_cf645885c9729a07e76c904e6ae801c7);
         
     
-        var popup_f84da191b7cf2903b94c872697bb502c = L.popup({
+        var popup_a86e9342426808c0db8ee6fef14afd2a = L.popup({
   "maxWidth": 350,
 });
 
         
             
-                var html_316633d8161bb7920472eaf873b0c021 = $(`<div id="html_316633d8161bb7920472eaf873b0c021" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> Idgah Hills, Bhopal - MPPCB<br>     <b>PM2.5:</b> 55.0<br>     <b>PM10:</b> 89.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
-                popup_f84da191b7cf2903b94c872697bb502c.setContent(html_316633d8161bb7920472eaf873b0c021);
+                var html_a839be3f67023d14c85d1a5a3b847b86 = $(`<div id="html_a839be3f67023d14c85d1a5a3b847b86" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px;">       <b>Station:</b> Idgah Hills, Bhopal - MPPCB<br>       <b>PM2.5:</b> 55.0<br>       <b>PM10:</b> 89.0<br>       <b>Last Update:</b> 19-05-2025 10:00:00     </div>     </div>`)[0];
+                popup_a86e9342426808c0db8ee6fef14afd2a.setContent(html_a839be3f67023d14c85d1a5a3b847b86);
             
         
 
-        circle_marker_34ec0e2fec2c2f6c7ee2246b6f115384.bindPopup(popup_f84da191b7cf2903b94c872697bb502c)
+        circle_marker_0ce8f0dc5cde53afc0d0e1b88243021d.bindPopup(popup_a86e9342426808c0db8ee6fef14afd2a)
         ;
 
         
     
     
-            circle_marker_34ec0e2fec2c2f6c7ee2246b6f115384.bindTooltip(
+            circle_marker_0ce8f0dc5cde53afc0d0e1b88243021d.bindTooltip(
                 `<div>
                      Idgah Hills, Bhopal - MPPCB | PM2.5: 55.0
                  </div>`,
@@ -199,30 +199,30 @@ PM2.5 & PM10 station-wise visualization (AQI India Dataset 2023–2025)
             );
         
     
-            var circle_marker_8f8b78852c37699cee1bdc9c27e80d92 = L.circleMarker(
+            var circle_marker_bd7420659c8e4e80a2da23fb3a6071aa = L.circleMarker(
                 [23.210494, 77.425409],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
-            ).addTo(feature_group_f541f8ec0aaaea14c4b1f7471f900bca);
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_cf645885c9729a07e76c904e6ae801c7);
         
     
-        var popup_52f428ad4491c9a7a1694b049b177f76 = L.popup({
+        var popup_1c4ef0eb2bcab198239315939ce41e61 = L.popup({
   "maxWidth": 350,
 });
 
         
             
-                var html_498c2f399a7530690ba5e953f53e8279 = $(`<div id="html_498c2f399a7530690ba5e953f53e8279" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> Paryavaran Parisar, Bhopal - MPPCB<br>     <b>PM2.5:</b> 47.0<br>     <b>PM10:</b> 57.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
-                popup_52f428ad4491c9a7a1694b049b177f76.setContent(html_498c2f399a7530690ba5e953f53e8279);
+                var html_d242fa1e781daf4dcad775f8a502b8c8 = $(`<div id="html_d242fa1e781daf4dcad775f8a502b8c8" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px;">       <b>Station:</b> Paryavaran Parisar, Bhopal - MPPCB<br>       <b>PM2.5:</b> 47.0<br>       <b>PM10:</b> 57.0<br>       <b>Last Update:</b> 19-05-2025 10:00:00     </div>     </div>`)[0];
+                popup_1c4ef0eb2bcab198239315939ce41e61.setContent(html_d242fa1e781daf4dcad775f8a502b8c8);
             
         
 
-        circle_marker_8f8b78852c37699cee1bdc9c27e80d92.bindPopup(popup_52f428ad4491c9a7a1694b049b177f76)
+        circle_marker_bd7420659c8e4e80a2da23fb3a6071aa.bindPopup(popup_1c4ef0eb2bcab198239315939ce41e61)
         ;
 
         
     
     
-            circle_marker_8f8b78852c37699cee1bdc9c27e80d92.bindTooltip(
+            circle_marker_bd7420659c8e4e80a2da23fb3a6071aa.bindTooltip(
                 `<div>
                      Paryavaran Parisar, Bhopal - MPPCB | PM2.5: 47.0
                  </div>`,
@@ -232,30 +232,30 @@ PM2.5 & PM10 station-wise visualization (AQI India Dataset 2023–2025)
             );
         
     
-            var circle_marker_2fa5bc89bc11a993a9df2b6726de0600 = L.circleMarker(
+            var circle_marker_16be845361c155c68723ead2d3bfd78f = L.circleMarker(
                 [23.233584, 77.400574],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
-            ).addTo(feature_group_f541f8ec0aaaea14c4b1f7471f900bca);
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_cf645885c9729a07e76c904e6ae801c7);
         
     
-        var popup_17c1b50d39b35fcf3009586a085e721a = L.popup({
+        var popup_85c2ed1137f6fb88aed5768f0822ad75 = L.popup({
   "maxWidth": 350,
 });
 
         
             
-                var html_5fc63913f072fa3c68c8740125dee99e = $(`<div id="html_5fc63913f072fa3c68c8740125dee99e" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> T T Nagar, Bhopal - MPPCB<br>     <b>PM2.5:</b> 38.0<br>     <b>PM10:</b> 0.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
-                popup_17c1b50d39b35fcf3009586a085e721a.setContent(html_5fc63913f072fa3c68c8740125dee99e);
+                var html_b2601cb65659e4dd243a3bd061e63776 = $(`<div id="html_b2601cb65659e4dd243a3bd061e63776" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px;">       <b>Station:</b> T T Nagar, Bhopal - MPPCB<br>       <b>PM2.5:</b> 38.0<br>       <b>PM10:</b> 0.0<br>       <b>Last Update:</b> 19-05-2025 10:00:00     </div>     </div>`)[0];
+                popup_85c2ed1137f6fb88aed5768f0822ad75.setContent(html_b2601cb65659e4dd243a3bd061e63776);
             
         
 
-        circle_marker_2fa5bc89bc11a993a9df2b6726de0600.bindPopup(popup_17c1b50d39b35fcf3009586a085e721a)
+        circle_marker_16be845361c155c68723ead2d3bfd78f.bindPopup(popup_85c2ed1137f6fb88aed5768f0822ad75)
         ;
 
         
     
     
-            circle_marker_2fa5bc89bc11a993a9df2b6726de0600.bindTooltip(
+            circle_marker_16be845361c155c68723ead2d3bfd78f.bindTooltip(
                 `<div>
                      T T Nagar, Bhopal - MPPCB | PM2.5: 38.0
                  </div>`,
@@ -265,39 +265,39 @@ PM2.5 & PM10 station-wise visualization (AQI India Dataset 2023–2025)
             );
         
     
-            feature_group_f541f8ec0aaaea14c4b1f7471f900bca.addTo(map_3c0e6b6c692fcea25862939071466804);
+            feature_group_cf645885c9729a07e76c904e6ae801c7.addTo(map_2d6a8a892a6ce32b48d43dd84f3c8632);
         
     
-            var feature_group_b27962b1a47a529d9a3e904c39b25b43 = L.featureGroup(
+            var feature_group_758542c8ddcefbd77878e377cd738b2b = L.featureGroup(
                 {
 }
             );
         
     
-            var circle_marker_25cd8c47ec7a1d34de2ae2694212bf30 = L.circleMarker(
+            var circle_marker_0e24987b50aec2e41051408b6f554344 = L.circleMarker(
                 [23.264759, 77.381568],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
-            ).addTo(feature_group_b27962b1a47a529d9a3e904c39b25b43);
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_758542c8ddcefbd77878e377cd738b2b);
         
     
-        var popup_58cfbd30fffcd74c66237d1ea04fdb51 = L.popup({
+        var popup_22a78db00a7d8f552cc36f5f6b0e34f8 = L.popup({
   "maxWidth": 350,
 });
 
         
             
-                var html_a2cdd3ae5d746d2f8527c64e98dba247 = $(`<div id="html_a2cdd3ae5d746d2f8527c64e98dba247" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> Idgah Hills, Bhopal - MPPCB<br>     <b>PM2.5:</b> 55.0<br>     <b>PM10:</b> 89.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
-                popup_58cfbd30fffcd74c66237d1ea04fdb51.setContent(html_a2cdd3ae5d746d2f8527c64e98dba247);
+                var html_69698a4cd013a0c3b21e9c6f8e6a2bd0 = $(`<div id="html_69698a4cd013a0c3b21e9c6f8e6a2bd0" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px;">       <b>Station:</b> Idgah Hills, Bhopal - MPPCB<br>       <b>PM2.5:</b> 55.0<br>       <b>PM10:</b> 89.0<br>       <b>Last Update:</b> 19-05-2025 10:00:00     </div>     </div>`)[0];
+                popup_22a78db00a7d8f552cc36f5f6b0e34f8.setContent(html_69698a4cd013a0c3b21e9c6f8e6a2bd0);
             
         
 
-        circle_marker_25cd8c47ec7a1d34de2ae2694212bf30.bindPopup(popup_58cfbd30fffcd74c66237d1ea04fdb51)
+        circle_marker_0e24987b50aec2e41051408b6f554344.bindPopup(popup_22a78db00a7d8f552cc36f5f6b0e34f8)
         ;
 
         
     
     
-            circle_marker_25cd8c47ec7a1d34de2ae2694212bf30.bindTooltip(
+            circle_marker_0e24987b50aec2e41051408b6f554344.bindTooltip(
                 `<div>
                      Idgah Hills, Bhopal - MPPCB | PM10: 89.0
                  </div>`,
@@ -307,30 +307,30 @@ PM2.5 & PM10 station-wise visualization (AQI India Dataset 2023–2025)
             );
         
     
-            var circle_marker_cd79ac712336e73a54a22145167ec01a = L.circleMarker(
+            var circle_marker_1a72e85510b789c0c735325d361adffc = L.circleMarker(
                 [23.210494, 77.425409],
-                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
-            ).addTo(feature_group_b27962b1a47a529d9a3e904c39b25b43);
+                {"bubblingMouseEvents": true, "color": "lightgreen", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightgreen", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_758542c8ddcefbd77878e377cd738b2b);
         
     
-        var popup_ef38cd2ff97e4cfe4e0c0c36012ac33a = L.popup({
+        var popup_24f34f1e92bc6b802a0ea5e6e6c8eb30 = L.popup({
   "maxWidth": 350,
 });
 
         
             
-                var html_eab2f1f3fc06f2d88b8a21380797d155 = $(`<div id="html_eab2f1f3fc06f2d88b8a21380797d155" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> Paryavaran Parisar, Bhopal - MPPCB<br>     <b>PM2.5:</b> 47.0<br>     <b>PM10:</b> 57.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
-                popup_ef38cd2ff97e4cfe4e0c0c36012ac33a.setContent(html_eab2f1f3fc06f2d88b8a21380797d155);
+                var html_d6e69444309789461d7dfc1dd6f9fb34 = $(`<div id="html_d6e69444309789461d7dfc1dd6f9fb34" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px;">       <b>Station:</b> Paryavaran Parisar, Bhopal - MPPCB<br>       <b>PM2.5:</b> 47.0<br>       <b>PM10:</b> 57.0<br>       <b>Last Update:</b> 19-05-2025 10:00:00     </div>     </div>`)[0];
+                popup_24f34f1e92bc6b802a0ea5e6e6c8eb30.setContent(html_d6e69444309789461d7dfc1dd6f9fb34);
             
         
 
-        circle_marker_cd79ac712336e73a54a22145167ec01a.bindPopup(popup_ef38cd2ff97e4cfe4e0c0c36012ac33a)
+        circle_marker_1a72e85510b789c0c735325d361adffc.bindPopup(popup_24f34f1e92bc6b802a0ea5e6e6c8eb30)
         ;
 
         
     
     
-            circle_marker_cd79ac712336e73a54a22145167ec01a.bindTooltip(
+            circle_marker_1a72e85510b789c0c735325d361adffc.bindTooltip(
                 `<div>
                      Paryavaran Parisar, Bhopal - MPPCB | PM10: 57.0
                  </div>`,
@@ -340,30 +340,30 @@ PM2.5 & PM10 station-wise visualization (AQI India Dataset 2023–2025)
             );
         
     
-            var circle_marker_85bede9af8e9a37b99b3b7ddc616293f = L.circleMarker(
+            var circle_marker_26c6f05b98f9ba0b4cbb698ac228f945 = L.circleMarker(
                 [23.233584, 77.400574],
-                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 3}
-            ).addTo(feature_group_b27962b1a47a529d9a3e904c39b25b43);
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(feature_group_758542c8ddcefbd77878e377cd738b2b);
         
     
-        var popup_b96ba35f418ec0800d2a88b335f013f6 = L.popup({
+        var popup_f8276b3f73319976c350407262d01cbb = L.popup({
   "maxWidth": 350,
 });
 
         
             
-                var html_8e2fb8fbd0bac06dcde21705c9d8b69f = $(`<div id="html_8e2fb8fbd0bac06dcde21705c9d8b69f" style="width: 100.0%; height: 100.0%;">     <b>Station:</b> T T Nagar, Bhopal - MPPCB<br>     <b>PM2.5:</b> 38.0<br>     <b>PM10:</b> 0.0<br>     <b>Last Update:</b> 19-05-2025 10:00:00     </div>`)[0];
-                popup_b96ba35f418ec0800d2a88b335f013f6.setContent(html_8e2fb8fbd0bac06dcde21705c9d8b69f);
+                var html_8133eb62db3b463a9fe1a7398283530e = $(`<div id="html_8133eb62db3b463a9fe1a7398283530e" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px;">       <b>Station:</b> T T Nagar, Bhopal - MPPCB<br>       <b>PM2.5:</b> 38.0<br>       <b>PM10:</b> 0.0<br>       <b>Last Update:</b> 19-05-2025 10:00:00     </div>     </div>`)[0];
+                popup_f8276b3f73319976c350407262d01cbb.setContent(html_8133eb62db3b463a9fe1a7398283530e);
             
         
 
-        circle_marker_85bede9af8e9a37b99b3b7ddc616293f.bindPopup(popup_b96ba35f418ec0800d2a88b335f013f6)
+        circle_marker_26c6f05b98f9ba0b4cbb698ac228f945.bindPopup(popup_f8276b3f73319976c350407262d01cbb)
         ;
 
         
     
     
-            circle_marker_85bede9af8e9a37b99b3b7ddc616293f.bindTooltip(
+            circle_marker_26c6f05b98f9ba0b4cbb698ac228f945.bindTooltip(
                 `<div>
                      T T Nagar, Bhopal - MPPCB | PM10: 0.0
                  </div>`,
@@ -373,45 +373,45 @@ PM2.5 & PM10 station-wise visualization (AQI India Dataset 2023–2025)
             );
         
     
-            var feature_group_1684789f106456ab3453993eeecc9f1b = L.featureGroup(
+            var feature_group_e64c5aa800a6c73e2fbac4f08f49dadf = L.featureGroup(
                 {
 }
             );
         
     
-            var heat_map_0ba21be89403ecee0dab1479feb6d96f = L.heatLayer(
+            var heat_map_643c47ae52f739be71f25e1d7e77ffa5 = L.heatLayer(
                 [[23.264759, 77.381568, 55.0], [23.210494, 77.425409, 47.0], [23.233584, 77.400574, 38.0]],
                 {
   "minOpacity": 0.5,
   "maxZoom": 13,
-  "radius": 30,
-  "blur": 25,
+  "radius": 35,
+  "blur": 28,
 }
             );
         
     
-            heat_map_0ba21be89403ecee0dab1479feb6d96f.addTo(feature_group_1684789f106456ab3453993eeecc9f1b);
+            heat_map_643c47ae52f739be71f25e1d7e77ffa5.addTo(feature_group_e64c5aa800a6c73e2fbac4f08f49dadf);
         
     
-            var layer_control_93aba12415baf1900db1dd8e97890ddf_layers = {
+            var layer_control_e7a08f6096fd13714f3337855413fa15_layers = {
                 base_layers : {
-                    "openstreetmap" : tile_layer_245de17f62cca33619d660e68ba41da8,
+                    "openstreetmap" : tile_layer_952612f29925332d437c94285e906729,
                 },
                 overlays :  {
-                    "PM2.5 Markers" : feature_group_f541f8ec0aaaea14c4b1f7471f900bca,
-                    "PM10 Markers" : feature_group_b27962b1a47a529d9a3e904c39b25b43,
-                    "PM2.5 Heatmap" : feature_group_1684789f106456ab3453993eeecc9f1b,
+                    "PM2.5 Markers" : feature_group_cf645885c9729a07e76c904e6ae801c7,
+                    "PM10 Markers" : feature_group_758542c8ddcefbd77878e377cd738b2b,
+                    "PM2.5 Heatmap" : feature_group_e64c5aa800a6c73e2fbac4f08f49dadf,
                 },
             };
-            let layer_control_93aba12415baf1900db1dd8e97890ddf = L.control.layers(
-                layer_control_93aba12415baf1900db1dd8e97890ddf_layers.base_layers,
-                layer_control_93aba12415baf1900db1dd8e97890ddf_layers.overlays,
+            let layer_control_e7a08f6096fd13714f3337855413fa15 = L.control.layers(
+                layer_control_e7a08f6096fd13714f3337855413fa15_layers.base_layers,
+                layer_control_e7a08f6096fd13714f3337855413fa15_layers.overlays,
                 {
   "position": "topright",
   "collapsed": false,
   "autoZIndex": true,
 }
-            ).addTo(map_3c0e6b6c692fcea25862939071466804);
+            ).addTo(map_2d6a8a892a6ce32b48d43dd84f3c8632);
 
         
 </script>
