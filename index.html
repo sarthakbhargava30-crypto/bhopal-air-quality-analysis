@@ -6,187 +6,344 @@
   <title>Bhopal Air Quality Analysis (PM2.5 & PM10)</title>
 
   <style>
+    :root {
+      --bg1: #0b1220;
+      --bg2: #111a2e;
+      --card: rgba(255, 255, 255, 0.08);
+      --card2: rgba(255, 255, 255, 0.06);
+      --border: rgba(255, 255, 255, 0.14);
+      --text: rgba(255, 255, 255, 0.92);
+      --muted: rgba(255, 255, 255, 0.72);
+      --muted2: rgba(255, 255, 255, 0.55);
+
+      --blue: #6dd5ff;
+      --green: #74ffb7;
+      --pink: #ff7bd6;
+      --yellow: #ffd36d;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0f19;
-      color: #ffffff;
-      line-height: 1.6;
+      color: var(--text);
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(109, 213, 255, 0.25), transparent 60%),
+                  radial-gradient(900px 500px at 80% 20%, rgba(255, 123, 214, 0.18), transparent 60%),
+                  radial-gradient(900px 600px at 40% 90%, rgba(116, 255, 183, 0.12), transparent 60%),
+                  linear-gradient(180deg, var(--bg1), var(--bg2));
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 30px 20px;
+    /* Container */
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 34px 18px 60px;
     }
 
-    .hero {
-      text-align: center;
-      padding: 50px 20px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #1d3557, #0b0f19);
-      box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      margin-bottom: 15px;
-    }
-
-    .subtitle {
-      font-size: 1.1rem;
-      color: #cbd5e1;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .btns {
-      margin-top: 30px;
+    /* Top Bar */
+    .topbar {
       display: flex;
-      justify-content: center;
-      gap: 15px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--card2);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--pink));
+      box-shadow: 0 0 18px rgba(109, 213, 255, 0.35);
+    }
+
+    .top-links {
+      display: flex;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
-    .button {
-      padding: 14px 20px;
-      border-radius: 12px;
+    .pill {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Hero */
+    .hero {
+      margin-top: 22px;
+      padding: 34px 22px;
+      border-radius: 26px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.15;
+      letter-spacing: 0.2px;
+    }
+
+    .subtitle {
+      margin: 14px auto 0;
+      max-width: 850px;
+      font-size: clamp(14px, 2vw, 16px);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Buttons */
+    .btn-row {
+      margin-top: 20px;
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
       text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-      display: inline-block;
+      font-weight: 650;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.25);
     }
 
-    .primary {
-      background: #38bdf8;
-      color: #0b0f19;
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
-    .primary:hover {
-      background: #0ea5e9;
+    .btn.primary {
+      background: linear-gradient(135deg, rgba(109,213,255,0.95), rgba(116,255,183,0.85));
+      color: #07111e;
+      border: none;
     }
 
-    .secondary {
-      background: #334155;
-      color: white;
+    .btn.secondary {
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
     }
 
-    .secondary:hover {
-      background: #475569;
+    .btn span {
+      opacity: 0.95;
     }
 
+    /* Grid */
     .grid {
-      margin-top: 40px;
+      margin-top: 22px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
     }
 
     .card {
-      background: #111827;
-      padding: 20px;
-      border-radius: 14px;
-      box-shadow: 0px 5px 15px rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 18px 18px;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.25);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.08);
     }
 
     .card h2 {
-      margin-top: 0;
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      color: #38bdf8;
+      margin: 0 0 10px;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     ul {
+      margin: 10px 0 0;
       padding-left: 18px;
-      margin: 0;
     }
 
-    li {
-      margin-bottom: 8px;
-      color: #e2e8f0;
+    /* Layout Cards */
+    .span-6 { grid-column: span 6; }
+    .span-4 { grid-column: span 4; }
+    .span-8 { grid-column: span 8; }
+    .span-12 { grid-column: span 12; }
+
+    /* Highlights */
+    .highlight {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      margin-top: 8px;
+      border: 1px solid var(--border);
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.06);
     }
 
-    .footer {
-      margin-top: 50px;
+    /* Footer */
+    footer {
+      margin-top: 22px;
       text-align: center;
-      font-size: 0.9rem;
-      color: #94a3b8;
-      padding: 20px 0;
+      color: var(--muted2);
+      font-size: 13px;
+    }
+
+    /* Mobile */
+    @media (max-width: 860px) {
+      .span-6, .span-4, .span-8 { grid-column: span 12; }
+      .topbar { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="wrap">
 
+    <!-- Top Bar -->
+    <div class="topbar">
+      <div class="brand">
+        <div class="dot"></div>
+        <div>Bhopal Air Quality Project</div>
+      </div>
+
+      <div class="top-links">
+        <div class="pill">Python</div>
+        <div class="pill">Data Analytics</div>
+        <div class="pill">Folium + GIS</div>
+        <div class="pill">GitHub Pages</div>
+      </div>
+    </div>
+
+    <!-- Hero -->
     <div class="hero">
       <h1>Bhopal Air Quality Analysis<br>(PM2.5 & PM10)</h1>
 
       <div class="subtitle">
-        Station-wise particulate pollution analysis for Bhopal using AQI India dataset (2023–2025) with an interactive map.
+        A station-wise particulate pollution analysis for Bhopal using the AQI India dataset (2023–2025),
+        featuring interactive mapping, layered visualization, and key summary insights.
       </div>
 
-      <div class="btns">
-        <a class="button primary" href="./bhopal_air_quality_map.html" target="_blank">
-          🌍 Open Interactive Map
+      <div class="btn-row">
+        <a class="btn primary" href="./bhopal_air_quality_map.html" target="_blank">
+          🗺️ <span>Open Interactive Map</span>
         </a>
 
-        <a class="button secondary" href="https://github.com/sarthakbhargava30-crypto/bhopal-air-quality-analysis" target="_blank">
-          📌 View GitHub Repository
+        <a class="btn secondary" href="https://github.com/sarthakbhargava30-crypto/bhopal-air-quality-analysis" target="_blank">
+          ⭐ <span>View GitHub Repository</span>
         </a>
       </div>
+
+      <div class="highlight">Live dashboard + analysis notebook + cleaned dataset</div>
     </div>
 
+    <!-- Cards -->
     <div class="grid">
-      <div class="card">
-        <h2>📌 Project Objectives</h2>
+
+      <div class="card span-6">
+        <h2>🎯 Project Objectives</h2>
         <ul>
-          <li>Extract Bhopal air quality readings from a large AQI dataset</li>
-          <li>Compare PM2.5 and PM10 across monitoring stations</li>
-          <li>Identify stations with highest particulate pollution</li>
-          <li>Visualize pollution using interactive markers + heatmap</li>
+          <li>Extract Bhopal station readings from a large AQI dataset</li>
+          <li>Compare PM2.5 and PM10 levels across monitoring stations</li>
+          <li>Identify stations with the highest particulate pollution</li>
+          <li>Create a professional interactive GIS dashboard using Folium</li>
         </ul>
       </div>
 
-      <div class="card">
-        <h2>🛠 Tools & Skills Used</h2>
+      <div class="card span-6">
+        <h2>🧠 Skills Demonstrated</h2>
         <ul>
-          <li>Python (Pandas, Matplotlib)</li>
-          <li>Data Cleaning & Feature Engineering</li>
-          <li>Interactive Visualization (Folium)</li>
-          <li>GitHub + GitHub Pages Deployment</li>
+          <li>Python (Pandas, data cleaning, feature engineering)</li>
+          <li>Exploratory Data Analysis (EDA)</li>
+          <li>Interactive Mapping (Folium)</li>
+          <li>Visualization layers + heatmaps</li>
+          <li>Deployment using GitHub Pages</li>
         </ul>
       </div>
 
-      <div class="card">
-        <h2>📊 Outputs</h2>
+      <div class="card span-4">
+        <h2>📦 Outputs</h2>
         <ul>
           <li>Clean station-wise dataset (CSV)</li>
-          <li>Analysis notebook (Jupyter)</li>
-          <li>Interactive map with:
-            <ul>
-              <li>PM2.5 layer</li>
-              <li>PM10 layer</li>
-              <li>PM2.5 heatmap</li>
-              <li>Legend + fullscreen + tooltips</li>
-            </ul>
-          </li>
+          <li>Jupyter Notebook (analysis)</li>
+          <li>Interactive map dashboard</li>
+          <li>Hosted live website</li>
         </ul>
       </div>
 
-      <div class="card">
-        <h2>✅ Key Findings</h2>
+      <div class="card span-4">
+        <h2>📌 Key Findings</h2>
         <ul>
-          <li>PM10 values are generally higher than PM2.5, indicating major dust contribution.</li>
-          <li>Some stations show significantly higher particulate levels compared to others.</li>
-          <li>Station-wise mapping makes hotspot detection easier for real-world action.</li>
+          <li>PM10 values were generally higher than PM2.5</li>
+          <li>Some stations showed significantly higher particulate levels</li>
+          <li>Indicates strong influence of dust + resuspended particles</li>
         </ul>
       </div>
+
+      <div class="card span-4">
+        <h2>🗃️ Dataset</h2>
+        <p>
+          Source: Kaggle — Real-Time Air Quality Index (AQI) India (2023–2025).
+        </p>
+        <p style="margin-top:10px;">
+          <a class="btn secondary" style="padding:10px 14px; border-radius:14px;"
+             href="https://www.kaggle.com/datasets/ishankat/real-time-air-quality-index-aqi-india-20232025"
+             target="_blank">
+            🔗 Open Dataset
+          </a>
+        </p>
+      </div>
+
+      <div class="card span-12">
+        <h2>🚀 Why This Project Matters</h2>
+        <p>
+          This project demonstrates real-world data analytics workflow: raw dataset → cleaned dataset → analysis → visualization →
+          interactive dashboard → deployment. It is a strong portfolio project even if you are from ECE, because it proves you can
+          build complete, end-to-end systems.
+        </p>
+      </div>
+
     </div>
 
-    <div class="footer">
-      Made by Sarthak • Bhopal Air Quality Project • GitHub Pages
-    </div>
+    <footer>
+      Built by <b>Sarthak Bhargava</b> • 2026 • Bhopal Air Quality Analytics
+    </footer>
 
   </div>
 </body>
